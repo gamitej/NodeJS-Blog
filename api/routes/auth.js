@@ -2,9 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 
 // Register
-
 router.post("/register", async (req, res) => {
-  // To know the req we are getting from client
   console.log(req.dody)
 
   // Whenever Using async func always use try & catch
@@ -28,7 +26,6 @@ module.exports = router
 
 
 // Login
-
 router.post("/login",async(req,res)=>{
   try{
       const user = await User.findOne({username:req.body.username})
