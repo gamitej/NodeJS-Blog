@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 dotenv.config();
 
+// Connect To MongoDB Server
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -17,6 +18,7 @@ app.use("/", (req, res) => {
   console.log("Welcome To My Blog!");
 });
 
+// Port Running
 app.listen("5000", () => {
   console.log("Backend Is Up & Running ...");
 });
