@@ -20,8 +20,26 @@ router.post("/register", async (req, res) => {
     const user = await newUser.save();
     res.status(200).json(user);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.keyValue);
   }
 });
 
 module.exports = router
+
+
+// Login
+
+router.post("/login",async(req,res)=>{
+  try{
+      const user = await User.findOne({username:req.body.username})
+      !user && res.status(400).json('Wrong Credentials')
+
+      const validate = await User.findOne({password:req.body.password})
+      !validate && res.status(400).json('Wrong Credentials')
+
+      res.status(200).json(user)
+  }
+  catch(err){
+    res.status(500).json(err);
+  }
+})
