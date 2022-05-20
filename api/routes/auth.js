@@ -34,7 +34,7 @@ router.post("/login",async(req,res)=>{
       const validate = await User.findOne({password:req.body.password})
       if(!validate) return res.status(400).json('Wrong Credentials')
 
-      res.status(200).json(user)
+      res.status(200).json('Success')
   }
   catch(err){
     res.status(500).json(err.message);
